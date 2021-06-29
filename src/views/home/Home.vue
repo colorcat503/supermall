@@ -9,41 +9,9 @@
     <tab-control
       class="tab-control"
       :titles="['流行','新款','精选']"
+      @tabClick="tabClick"
     ></tab-control>
-    <ul>
-      <li>列表1</li>
-      <li>列表2</li>
-      <li>列表3</li>
-      <li>列表4</li>
-      <li>列表5</li>
-      <li>列表6</li>
-      <li>列表7</li>
-      <li>列表8</li>
-      <li>列表9</li>
-      <li>列表10</li>
-      <li>列表11</li>
-      <li>列表12</li>
-      <li>列表13</li>
-      <li>列表14</li>
-      <li>列表15</li>
-      <li>列表16</li>
-      <li>列表17</li>
-      <li>列表18</li>
-      <li>列表19</li>
-      <li>列表20</li>
-      <li>列表9</li>
-      <li>列表10</li>
-      <li>列表11</li>
-      <li>列表12</li>
-      <li>列表13</li>
-      <li>列表14</li>
-      <li>列表15</li>
-      <li>列表16</li>
-      <li>列表17</li>
-      <li>列表18</li>
-      <li>列表19</li>
-      <li>列表20</li>
-    </ul>
+    <goods-list :goods="showGoods"> </goods-list>
   </div>
 </template>
 
@@ -54,6 +22,7 @@
 
   import NavBar from "components/common/navbar/NavBar";
   import TabControl from "components/content/tabControl/TabControl";
+  import GoodsList from "components/content/goods/GoodsList";
 
   import { getHomeMultidata, getGoodsData } from "network/home";
 
@@ -64,7 +33,8 @@
       "home-swiper": HomeSwiper,
       "recommend-view": RecommendView,
       "feature-view": Feature,
-      "tab-control": TabControl
+      "tab-control": TabControl,
+      "goods-list": GoodsList
     },
     data() {
       return {
@@ -72,18 +42,38 @@
         recommends: null,
         goods: {
           pop: { page: 0, list: [] },
-          news: { page: 0, list: [] },
-          sell: { page: 0, lise: [] }
-        }
+          new: { page: 0, list: [] },
+          sell: { page: 0, list: [] }
+        },
+        currentType: "pop"
       };
+    },
+    computed: {
+      showGoods() {
+        return this.goods[this.currentType].list;
+      }
     },
     created() {
       this.getHomeMultidata();
       this.getGoodsData("pop");
-      this.getGoodsData("news");
+      this.getGoodsData("new");
       this.getGoodsData("sell");
     },
     methods: {
+      // 事件监听
+      tabClick(index) {
+        switch (index) {
+          case 0:
+            this.currentType = "pop";
+            break;
+          case 1:
+            this.currentType = "new";
+            break;
+          case 2:
+            this.currentType = "sell";
+        }
+      },
+      // 网络请求方法
       getHomeMultidata() {
         getHomeMultidata().then(res => {
           this.banners = res.data.banner.list;
@@ -93,7 +83,6 @@
       getGoodsData(type) {
         const page = this.goods[type].page + 1;
         getGoodsData(type, page).then(res => {
-          console.log(res.data.list);
           this.goods[type].list.push(...res.data.list);
           this.goods[type].page += 1;
         });
@@ -118,5 +107,6 @@
   .tab-control {
     position: sticky;
     top: 44px;
+    z-index: 8;
   }
 </style>
