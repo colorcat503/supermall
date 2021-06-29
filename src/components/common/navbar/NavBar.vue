@@ -19,7 +19,7 @@
   .nav-bar {
     display: flex;
     line-height: 44px;
-    box-shadow: 0 1px 5px 0 #fafafa;
+    box-shadow: 0 0px 1px 0 #cccccc;
   }
   .left,
   .right {

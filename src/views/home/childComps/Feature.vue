@@ -8,11 +8,18 @@
 
 <script>
   export default {
-    name: "App",
+    name: "Feature",
     data() {
       return {};
     }
   };
 </script>
 
-<style scoped></style>
+<style scoped>
+  .feature {
+    border-bottom: 10px solid #f5f5f5;
+  }
+  .feature img {
+    width: 100%;
+  }
+</style>
