@@ -37,9 +37,12 @@
       this.scroll.on("scroll", opsition => {
         this.$emit("scroll", opsition);
       });
-      this.scroll.on("pullingUp", () => {
-        this.$emit("pullingUp");
-      });
+      // 3 监听srcoll滚动到底部
+      if (this.pullUpLoad) {
+        this.scroll.on("pullingUp", () => {
+          this.$emit("pullingUp");
+        });
+      }
     },
     methods: {
       scrollTo(x, y, time = 300) {

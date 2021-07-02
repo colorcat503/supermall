@@ -38,6 +38,7 @@
   import BackTop from "components/content/backTop/BackTop";
 
   import { getHomeMultidata, getGoodsData } from "network/home";
+  import { debounce } from "common/utils";
 
   export default {
     name: "Home",
@@ -77,24 +78,13 @@
       this.getGoodsData("sell");
     },
     mounted() {
-      const refresh = this.debounce(this.$refs.scroll.refresh, 500);
+      const refresh = debounce(this.$refs.scroll.refresh, 500);
       this.$bus.$on("itemImgLoad", () => {
         refresh();
       });
     },
     methods: {
       // 事件监听
-      // 防抖函数
-      debounce(func, delay) {
-        // debugger;
-        let timer = null;
-        return function(...args) {
-          if (timer) clearTimeout(timer);
-          timer = setTimeout(() => {
-            func.apply(this, args);
-          }, delay);
-        };
-      },
       tabClick(index) {
         switch (index) {
           case 0:
@@ -131,6 +121,7 @@
         getGoodsData(type, page).then(res => {
           this.goods[type].list.push(...res.data.list);
           this.goods[type].page += 1;
+          if (this.goods[type].page < 2) return;
           this.$refs.scroll.finishPullUp();
         });
       }
