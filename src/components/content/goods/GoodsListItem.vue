@@ -1,6 +1,7 @@
 <template>
   <div class="goods-item">
-    <img :src="goodsItem.show.img" alt="123" />
+    <!-- @loaad监听图片加载完成 -->
+    <img :src="goodsItem.show.img" alt="123" @load="imgLoad" />
     <div class="goods-info">
       <p>{{ goodsItem.title }}</p>
       <span class="price">{{ goodsItem.price }}</span>
@@ -22,6 +23,12 @@
     },
     data() {
       return {};
+    },
+    methods: {
+      imgLoad() {
+        // $bus 事件总线 需要在Vue.prototype.$bus = new Vue();
+        this.$bus.$emit("itemImgLoad");
+      }
     }
   };
 </script>

@@ -18,6 +18,7 @@
       titles: {
         type: Array,
         default() {
+          // 当默认值是数组或者对象的时候 default 必须是函数
           return [];
         }
       }
