@@ -31,7 +31,6 @@
     },
     methods: {
       itemClick() {
-        console.log(this.$route);
         this.$router.replace(this.path).catch(err => {});
       }
     }

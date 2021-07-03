@@ -1,5 +1,5 @@
 <template>
-  <div class="goods-item">
+  <div class="goods-item" @click="itemClick">
     <!-- @loaad监听图片加载完成 -->
     <img :src="goodsItem.show.img" alt="123" @load="imgLoad" />
     <div class="goods-info">
@@ -28,6 +28,10 @@
       imgLoad() {
         // $bus 事件总线 需要在Vue.prototype.$bus = new Vue();
         this.$bus.$emit("itemImgLoad");
+      },
+      itemClick() {
+        this.$router.push(`./detail/${this.goodsItem.iid}`);
+        // this.$router.push({path:'./detail',qu})
       }
     }
   };

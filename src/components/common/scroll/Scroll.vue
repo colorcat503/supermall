@@ -52,6 +52,7 @@
         this.scroll.finishPullUp();
       },
       refresh() {
+        // 刷新滚动 重新计数滚动高度
         this.scroll && this.scroll.refresh();
       }
     }
