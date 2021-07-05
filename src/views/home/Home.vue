@@ -10,7 +10,7 @@
       v-show="isTabFixed"
     ></tab-control>
     <better-scroll
-      class="content"
+      class="scrollContent"
       ref="scroll"
       :probe-type="3"
       :pull-up-load="true"
@@ -173,16 +173,10 @@
     top: 44px;
     left: 0;
   }
-  .content {
-    /* height: 300px; */
+  .scrollContent {
     overflow: hidden;
     position: absolute;
     top: 44px;
     bottom: 49px;
   }
-  /* .content {
-    height: calc(100% - 93px);
-    overflow: hidden;
-    margin-top: 44px;
-  } */
 </style>

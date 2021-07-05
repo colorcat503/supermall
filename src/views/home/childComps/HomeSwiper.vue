@@ -13,7 +13,7 @@
 <script>
   import { Swiper, SwiperItem } from "components/common/swiper";
   export default {
-    name: "App",
+    name: "HomeSwiper",
     components: {
       "swiper-box": Swiper,
       "swiper-item": SwiperItem

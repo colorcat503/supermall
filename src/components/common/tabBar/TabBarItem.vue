@@ -10,7 +10,7 @@
 
 <script>
   export default {
-    name: "App",
+    name: "TabBarItem",
     props: {
       path: String,
       color: {
