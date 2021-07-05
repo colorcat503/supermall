@@ -1,7 +1,7 @@
 <template>
   <div id="detailBar">
     <nav-bar>
-      <div slot="left" class="back">
+      <div slot="left" class="back" @click="back">
         <img src="~assets/img/common/back.svg" alt="" />
       </div>
       <div slot="center" class="titles">
@@ -21,7 +21,7 @@
 <script>
   import NavBar from "components/common/navbar/NavBar";
   export default {
-    name: "App",
+    name: "DetailBar",
     components: {
       "nav-bar": NavBar
     },
@@ -34,6 +34,9 @@
     methods: {
       titleClick(index) {
         this.currentIndex = index;
+      },
+      back() {
+        this.$router.back();
       }
     }
   };
@@ -46,6 +49,10 @@
   }
   .title-item {
     flex: 1;
+  }
+  .back img {
+    vertical-align: middle;
+    margin-left: 10px;
   }
   .active {
     color: var(--color-high-text);
