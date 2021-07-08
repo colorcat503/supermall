@@ -31,9 +31,6 @@
     },
     data() {
       return {};
-    },
-    mounted() {
-      console.log(111, this.goods);
     }
   };
 </script>

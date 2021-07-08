@@ -29,6 +29,9 @@
         </table>
       </div>
     </div>
+    <div class="shop-bottom">
+      <div class="enter-shop">进店逛逛</div>
+    </div>
   </div>
 </template>
 
@@ -52,6 +55,7 @@
 <style scoped>
   .shop-info {
     padding: 8px;
+    border-bottom: 5px solid #fcfcfc;
   }
   .shop-top {
     margin: 10px 0;
@@ -66,8 +70,6 @@
   .shop-middle {
     display: flex;
     justify-content: space-between;
-  }
-  .shop-middle-item {
   }
   .shop-middle-left {
     display: flex;
@@ -104,5 +106,17 @@
 
   .better-more {
     background-color: red;
+  }
+  .shop-bottom {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+  }
+  .enter-shop {
+    background-color: #eeeeee;
+    width: 50%;
+    text-align: center;
+    padding: 5px;
+    border-radius: 20px;
   }
 </style>
