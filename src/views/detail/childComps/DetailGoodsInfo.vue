@@ -41,9 +41,11 @@
     },
     methods: {
       imgLoad() {
-        if (++this.counter === this.imgLength) {
-          this.$emit("imageLoad");
-        }
+        // // 最后一张图片加载完后 发送事件
+        // if (++this.counter === this.imgLength) {
+        //   this.$emit("imageLoad");
+        // }
+        this.$emit("imageLoad");
       }
     }
   };

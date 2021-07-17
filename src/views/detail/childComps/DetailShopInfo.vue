@@ -7,7 +7,7 @@
     <div class="shop-middle">
       <div class="shop-middle-item shop-middle-left">
         <div class="info-sells">
-          <div class="count">{{ shop.sells }}</div>
+          <div class="count">{{ shop.sells | sellCountFilter }}</div>
           <div class="text">总销量</div>
         </div>
         <div class="info-goods">
@@ -48,6 +48,11 @@
     },
     data() {
       return {};
+    },
+    filters: {
+      sellCountFilter(value) {
+        return value >= 10000 ? (value / 10000).toFixed(1) + "万" : value;
+      }
     }
   };
 </script>

@@ -45,19 +45,20 @@
 
   import { getHomeMultidata, getGoodsData } from "network/home";
   import { debounce } from "common/utils";
+  import { backTopMixin } from "common/mixin";
 
   export default {
     name: "Home",
     components: {
-      "nav-bar": NavBar,
-      "home-swiper": HomeSwiper,
-      "recommend-view": RecommendView,
+      NavBar,
+      HomeSwiper,
+      RecommendView,
       "feature-view": Feature,
-      "tab-control": TabControl,
-      "goods-list": GoodsList,
-      "better-scroll": Scroll,
-      "back-top": BackTop
+      TabControl,
+      GoodsList,
+      "better-scroll": Scroll
     },
+    mixins: [backTopMixin],
     data() {
       return {
         banners: null,
@@ -117,10 +118,6 @@
         }
         this.$refs.tabControl1.currentIndex = index;
         this.$refs.tabControl2.currentIndex = index;
-      },
-      backClick() {
-        // 回到顶部
-        this.$refs.scroll.scrollTo(0, 0, 500);
       },
       contentScroll(opsition) {
         // backTop 组件的显示隐藏
