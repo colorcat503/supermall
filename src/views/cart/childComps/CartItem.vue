@@ -3,7 +3,7 @@
     <div class="item-selector">
       <div
         class="selector"
-        :class="{'check':cartItem.isChecked}"
+        :class="{'check':cartItem.checked}"
         @click="itemClick"
       >
         <img src="~assets/img/cart/tick.svg" alt="" />
@@ -33,22 +33,23 @@
           return {};
         }
       }
-      // index: {
-      //   type: Number,
-      //   default: 0
-      // }
     },
 
     data() {
-      return {
-        // isChecked: false
-      };
+      return {};
     },
 
     methods: {
       itemClick() {
-        this.cartItem.isChecked = !this.cartItem.isChecked;
-        // this.$store.state.cartList[this.index].activeed = this.isChecked;
+        console.log(this.cartItem);
+        this.cartItem.checked = !this.cartItem.checked;
+        // // this.$store.state.cartList[this.index].activeed = this.isChecked;
+        // this.$store.state.cartList.forEach(item => {
+        //   if (item.isChecked) {
+        //     let price = parseInt(item.price.substr(1, item.price.length - 1));
+        //     this.total = price * item.count;
+        //   }
+        // });
       }
     }
   };
@@ -61,9 +62,7 @@
     justify-content: space-between;
     padding: 10px 0;
   }
-  .item-selector {
-    width: 30px;
-  }
+
   .item-img img {
     width: 50px;
     border-radius: 5px;
@@ -99,6 +98,7 @@
     color: var(--color-tint);
   }
   .item-selector {
+    width: 30px;
     display: flex;
     align-items: center;
     justify-content: center;

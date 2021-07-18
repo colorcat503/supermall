@@ -5,7 +5,7 @@ export default {
     payload.count += 1;
   },
   addToCart(state, payload) {
-    payload.isChecked = false;
+    payload.checked = false;
     state.cartList.push(payload);
   }
 };

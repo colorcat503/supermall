@@ -5,6 +5,9 @@ export default {
       commit("addCounter", oldProduct);
     } else {
       payload.count = 1;
+      payload.price = parseInt(
+        payload.price.substr(1, payload.price.length - 1)
+      );
       commit("addToCart", payload);
     }
   }

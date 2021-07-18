@@ -6,6 +6,7 @@
     <better-scroll ref="scroll" class="cart-content" :probe-type="3">
       <cart-list></cart-list>
     </better-scroll>
+    <bottom-bar class="cart-bar"></bottom-bar>
   </div>
 </template>
 
@@ -13,6 +14,7 @@
   import NavBar from "components/common/navbar/NavBar";
   import BetterScroll from "components/common/scroll/Scroll";
   import CartList from "./childComps/CartList";
+  import BottomBar from "./childComps/CartBottomBar";
 
   import { mapGetters } from "vuex";
   export default {
@@ -20,7 +22,8 @@
     components: {
       NavBar,
       CartList,
-      BetterScroll
+      BetterScroll,
+      BottomBar
     },
     computed: {
       // 语法1
@@ -53,7 +56,12 @@
     width: 100%;
     position: absolute;
     top: 44px;
-    bottom: 49px;
+    bottom: 89px;
     overflow: hidden;
+  }
+  .cart-bar {
+    position: absolute;
+    bottom: 49px;
+    width: 100%;
   }
 </style>
