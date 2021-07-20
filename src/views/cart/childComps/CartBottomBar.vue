@@ -2,7 +2,7 @@
   <div class="bottom-bar">
     <div class="all-checked">
       <div class="bottom-selector">
-        <div class="selector" :class="{'check':allChecked}" @click="itemClick">
+        <div class="selector" :class="{'check':allChecked}" @click="allCheck">
           <img src="~assets/img/cart/tick.svg" alt="" />
         </div>
       </div>
@@ -19,12 +19,9 @@
   export default {
     name: "BottomBar",
     data() {
-      return {
-        allChecked: false
-        // totalPrice: 0
-      };
+      return {};
     },
-    computeds: {
+    computed: {
       ...mapGetters(["cartList"]),
       totalPrice() {
         return this.cartList
@@ -40,10 +37,19 @@
         return this.cartList.filter(item => {
           return item.checked;
         }).length;
+      },
+      allChecked() {
+        return this.checkLength == this.cartList.length;
       }
     },
     methods: {
-      itemClick() {}
+      allCheck() {
+        let allChecked = this.allChecked;
+        this.cartList.forEach(item => {
+          item.checked = !allChecked;
+        });
+        console.log(this.cartList);
+      }
     }
   };
 </script>

@@ -12,9 +12,6 @@
       ref="scroll"
       @scroll="detailScroll"
     >
-      <ul>
-        <li v-for="item in $store.state.cartList">{{ item }}</li>
-      </ul>
       <detail-swiper :topImages="topImages"></detail-swiper>
       <base-info :goods="goods"></base-info>
       <shop-info :shop="shop"></shop-info>
@@ -30,7 +27,7 @@
       <goods-list :goods="recommends" ref="goodsList"></goods-list>
     </better-scroll>
     <back-top @click.native="backClick" v-show="isShowBackTop"></back-top>
-    <bottom-bar @addCart="addCart"></bottom-bar>
+    <bottom-bar @addToCart="addToCart"></bottom-bar>
   </div>
 </template>
 
@@ -56,6 +53,8 @@
     getRecommend
   } from "network/detail";
   import { backTopMixin } from "common/mixin";
+
+  import { mapActions } from "vuex";
 
   export default {
     name: "Detail",
@@ -90,6 +89,7 @@
         isShowBackTop: false
       };
     },
+    computed: {},
     mounted() {
       this.newRefresh = debounce(this.$refs.scroll.refresh, 500);
       this.itemImgLister = () => {
@@ -132,6 +132,7 @@
       // console.log(111);
     },
     methods: {
+      ...mapActions(["addCart"]),
       detailImgLoad() {
         this.newRefresh();
         this.getThemeTopY();
@@ -163,15 +164,19 @@
         }
         this.isShowBackTop = opsitionY > 1000 ? true : false;
       },
-      addCart() {
-        console.log("----");
+      addToCart() {
         const product = {};
         product.image = this.topImages[0];
         product.title = this.goods.title;
         product.desc = this.goods.desc;
         product.price = this.goods.realPrice;
         product.iid = this.iid;
-        this.$store.dispatch("addCart", product);
+        // this.$store.dispatch("addCart", product);
+        //mapActions promise
+        this.addCart(product).then(res => {
+          console.log(res);
+          this.$toast.show(res, 5000);
+        });
       }
     }
   };

@@ -16,6 +16,7 @@
   import CartList from "./childComps/CartList";
   import BottomBar from "./childComps/CartBottomBar";
 
+  //引入 mapGetters ，来映射getter里的关系
   import { mapGetters } from "vuex";
   export default {
     name: "Cart",

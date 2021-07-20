@@ -29,7 +29,7 @@
     },
     methods: {
       addToCart() {
-        this.$emit("addCart");
+        this.$emit("addToCart");
       }
     }
   };
