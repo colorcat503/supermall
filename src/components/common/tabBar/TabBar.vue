@@ -1,5 +1,5 @@
 <template>
-  <div id="tab-bar">
+  <div id="tab-bar" class="ignore">
     <slot></slot>
     <!-- <tabbar-item> -->
     <!-- 使用路径别名的时候前面必须加~ -->
