@@ -7,7 +7,7 @@ export function debounce(func, delay = 100) {
     }, delay);
   };
 }
-// 时间格式化
+// 时间格式化 1999/10/10   1999-10-10
 export function formatData(date, fmt) {
   if (/(y+)/.test(fmt)) {
     fmt = fmt.replace(

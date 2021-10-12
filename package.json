@@ -11,8 +11,10 @@
     "better-scroll": "^2.4.1",
     "core-js": "^3.6.5",
     "fastclick": "^1.0.6",
+    "moment": "^2.29.1",
     "normalize.css": "^8.0.1",
     "vue": "^2.6.11",
+    "vue-cli": "^2.9.6",
     "vue-lazyload": "^1.3.3",
     "vue-router": "^3.5.2",
     "vuex": "^3.6.2"
@@ -22,5 +24,20 @@
     "@vue/cli-service": "~4.5.0",
     "postcss-px-to-viewport": "^1.1.1",
     "vue-template-compiler": "^2.6.11"
-  }
+  },
+  "description": "```\r npm install\r ```",
+  "main": "babel.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/colorcat503/supermall.git"
+  },
+  "keywords": [
+    "941003"
+  ],
+  "author": "zwy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/colorcat503/supermall/issues"
+  },
+  "homepage": "https://github.com/colorcat503/supermall#readme"
 }

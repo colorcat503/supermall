@@ -5,10 +5,13 @@ import store from "./store";
 import FastClick from "fastclick";
 import VueLazyload from "vue-lazyload";
 import toast from "./components/common/toast";
+import moment from 'moment'
 
 Vue.config.productionTip = false;
 // 添加事件总线对象
 Vue.prototype.$bus = new Vue();
+Vue.prototype.$moment = moment
+moment.locale('zh-cn')
 // 安装toast
 Vue.use(toast);
 Vue.use(VueLazyload, {
